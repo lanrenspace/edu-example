@@ -1,0 +1,13 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: lanrenspace.edu.service.resume
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://175.24.45.125:3306/lanrenspace_edu?useUnicode=true&characterEncoding=utf8
+    username: admin
+    password: 123456
+    jpa:
+      database: MySQL
+      show-sql: true
