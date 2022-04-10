@@ -15,6 +15,7 @@
         <module>edu-cloud-hystrix-dashboard</module>
         <module>edu-cloud-hystrix-turbine</module>
         <module>edu-cloud-gateway</module>
+        <module>edu-cloud-config</module>
     </modules>
     <name>edu-parent</name>
     <packaging>pom</packaging>
@@ -84,6 +85,13 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-commons</artifactId>
+        </dependency>
+
+        <!--  配置文件加密   -->
+        <dependency>
+            <groupId>com.github.ulisesbocchio</groupId>
+            <artifactId>jasypt-spring-boot-starter</artifactId>
+            <version>3.0.3</version>
         </dependency>
     </dependencies>
 

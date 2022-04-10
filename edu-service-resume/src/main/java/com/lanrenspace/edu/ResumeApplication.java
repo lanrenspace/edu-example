@@ -1,6 +1,7 @@
 package com.lanrenspace.edu;
 
 import com.netflix.hystrix.contrib.metrics.eventstream.HystrixMetricsStreamServlet;
+import com.ulisesbocchio.jasyptspringboot.annotation.EnableEncryptableProperties;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
@@ -17,6 +18,7 @@ import org.springframework.context.annotation.Bean;
 // 通用型注解，可以注册到Eureka、Nacos等
 @EnableDiscoveryClient
 @SpringBootApplication
+@EnableEncryptableProperties
 @EntityScan("com.lanrenspace.edu.entity")
 public class ResumeApplication {
 

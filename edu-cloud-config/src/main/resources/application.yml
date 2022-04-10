@@ -1,0 +1,26 @@
+server:
+  port: 9006
+spring:
+  application:
+    name: lanrenspace.edu.config.server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/lanrenspace/edu-config-repo.git
+          username: ENC(XNPI2BuWHpnmFHqbh70dLzvLnvk0IMyZ41H9ifQvRwMxLNOXI01RWQPkAIVwB6XMbOuvIOezWFkC5oGSAV9Srw==)
+          password: ENC(sW9bdSFQGuuGSnBoS+lEIT5k51voVxZkqeIL22AeSVGAj0fOLUZKFS0pd2FrP0+d)
+          search-paths:
+            - edu-config-repo
+      label: main
+
+#注册到Eureka服务中心
+edu:
+  eureka: LanrenspaceEduEurekaServerNodeA
+eureka:
+  client:
+    service-url:
+      #defaultZone: http://${edu.eureka}:8761/eureka,http://${edu.eureka}:8762/eureka,http://${edu.eureka}:8763/eureka
+      defaultZone: http://${edu.eureka}:8761/eureka
+  instance:
+    instance-id: ${spring.application.name}:${server.port}

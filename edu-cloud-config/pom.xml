@@ -8,9 +8,8 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
-    <artifactId>edu-service-resume</artifactId>
-    <name>edu-service-resume</name>
+    <artifactId>edu-cloud-config</artifactId>
+    <name>edu-cloud-config</name>
     <!-- FIXME change it to the project's website -->
     <url>http://www.example.com</url>
 
@@ -22,25 +21,12 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.lanrenspace</groupId>
-            <artifactId>edu-service-common</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-config-server</artifactId>
         </dependency>
-
-        <!--eureka client客户端-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-config-client</artifactId>
         </dependency>
     </dependencies>
 

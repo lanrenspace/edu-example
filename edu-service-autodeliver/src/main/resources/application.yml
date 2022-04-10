@@ -6,7 +6,7 @@ spring:
 
 #注册到Eureka服务中心
 edu:
-  eureka: 175.24.45.125
+  eureka: LanrenspaceEduEurekaServerNodeA
 eureka:
   client:
     service-url:
