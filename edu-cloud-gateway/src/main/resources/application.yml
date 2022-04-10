@@ -1,0 +1,34 @@
+server:
+  port: 9002
+spring:
+  application:
+    name: lanrenspace.edu.gateway.server
+  cloud:
+    gateway:
+      #动态路由uri应该配置的是服务名称,gateway从网关中获取
+      routes: #路由可以有多个
+        - id: service-autodeliver-router #自定义的路由ID,需要唯一
+          #uri: http://127.0.0.1:8090
+          uri: lb://LANRENSPACE.EDU.SERVICE.AUTODELIVER
+          # 断言：路由条件，Predicate接受一个输入参数，返回一个boolean结果
+          predicates:
+            - Path=/autodeliver/**
+          filters:
+            # http://127.0.0.1:8090/autodeliver/a/b/c = http://127.0.0.1:8080/autodeliver/b/c
+            - StripPrefix=1
+        - id: service-resume-router
+          #uri: http://127.0.0.1:8080
+          uri: lb://LANRENSPACE.EDU.SERVICE.RESUME
+          predicates:
+            - Path=/resume/**
+
+#注册到Eureka服务中心
+edu:
+  eureka: 175.24.45.125
+eureka:
+  client:
+    service-url:
+      #defaultZone: http://${edu.eureka}:8761/eureka,http://${edu.eureka}:8762/eureka,http://${edu.eureka}:8763/eureka
+      defaultZone: http://${edu.eureka}:8761/eureka
+  instance:
+    instance-id: ${spring.application.name}:${server.port}

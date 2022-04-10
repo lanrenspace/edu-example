@@ -14,6 +14,7 @@
         <module>edu-cloud-eureka-server</module>
         <module>edu-cloud-hystrix-dashboard</module>
         <module>edu-cloud-hystrix-turbine</module>
+        <module>edu-cloud-gateway</module>
     </modules>
     <name>edu-parent</name>
     <packaging>pom</packaging>
@@ -32,10 +33,6 @@
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-logging</artifactId>
