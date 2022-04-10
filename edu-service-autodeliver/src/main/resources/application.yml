@@ -1,2 +1,32 @@
 server:
   port: 8090
+spring:
+  application:
+    name: lanrenspace.edu.service.autodeliver
+
+#注册到Eureka服务中心
+edu:
+  eureka: 175.24.45.125
+eureka:
+  client:
+    service-url:
+      #defaultZone: http://${edu.eureka}:8761/eureka,http://${edu.eureka}:8762/eureka,http://${edu.eureka}:8763/eureka
+      defaultZone: http://${edu.eureka}:8761/eureka
+  instance:
+    instance-id: ${spring.application.name}:${server.port}
+
+#针对被调用的微服务名称设置负载均衡策略（不加服务名称就是全局生效）
+lanrenspace.edu.service.resume:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+
+# springboot中暴露健康检查等端点接口
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  # 暴露健康检查细节
+  endpoint:
+    health:
+      show-details: always

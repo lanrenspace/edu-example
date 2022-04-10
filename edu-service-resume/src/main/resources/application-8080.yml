@@ -17,6 +17,7 @@ edu:
 eureka:
   client:
     service-url:
-      defaultZone: http://${edu.eureka}:8761/eureka,http://${edu.eureka}:8762/eureka,http://${edu.eureka}:8763/eureka
+      #defaultZone: http://${edu.eureka}:8761/eureka,http://${edu.eureka}:8762/eureka,http://${edu.eureka}:8763/eureka
+      defaultZone: http://${edu.eureka}:8761/eureka
   instance:
     instance-id: ${spring.application.name}:${server.port}

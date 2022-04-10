@@ -1,0 +1,19 @@
+server:
+  port: 8763
+spring:
+  application:
+    name: lanrenspace.edu.eureka.server
+
+eureka:
+  # 当前eureka实例主机名
+  instance:
+    hostname: 127.0.0.1
+  # eureka 客户端配置信息,和server交互
+  client:
+    service-url: #配置客户端所交互的Eureka Server地址
+      # 集群模式下，应该指向其他EurekaServer
+      defaultZone: http://${eureka.instance.hostname}:8761/eureka,http://${eureka.instance.hostname}:8762/eureka
+    # 是否需要注册,集群模式下需要注册
+    register-with-eureka: true
+    # 是否获取注册中心的服务信息
+    fetch-registry: true
