@@ -8,6 +8,7 @@ import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
@@ -20,6 +21,8 @@ import org.springframework.web.client.RestTemplate;
 // 开启熔断器
 @EnableCircuitBreaker
 @EnableDiscoveryClient
+// 开启feign功能
+@EnableFeignClients
 @SpringBootApplication(exclude = DataSourceAutoConfiguration.class)
 public class AutodeliverApplication {
 

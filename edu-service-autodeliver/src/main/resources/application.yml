@@ -19,6 +19,16 @@ eureka:
 lanrenspace.edu.service.resume:
   ribbon:
     NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+    #请求连接超时时间
+    ConnectTimeout: 2000
+    #请求处理超时时间
+    ReadTimeout: 5000
+    #对所有操作都进行重试
+    OkToRetryOnAllOperations: true
+    #对当前选中实例重试次数，不包括第一次调用
+    MaxAutoRetries: 0
+    #切换实例的重试次数
+    MaxAutoRetriesNextServer: 0
 
 # springboot中暴露健康检查等端点接口
 management:
@@ -30,3 +40,32 @@ management:
   endpoint:
     health:
       show-details: always
+
+# feign支持debug解绑
+logging:
+  level:
+    com.lanrenspace.edu.service.ResumeServiceFeignClient: debug
+
+# 开启feign的熔断功能
+feign:
+  hystrix:
+    enabled: true
+  compression:
+    request:
+      # 开启请求压缩
+      enabled: true
+      # 设置触发压缩的大小下限，这也是默认值
+      min-request-size: 2048
+      # 设置压缩的数据类型，这也是默认值
+      mime-types: text/html,application/xml,application/json
+    response:
+      # 开启响应压缩
+      enabled: true
+# hystrix超时时长,feign与hystrix取最小值
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 1000

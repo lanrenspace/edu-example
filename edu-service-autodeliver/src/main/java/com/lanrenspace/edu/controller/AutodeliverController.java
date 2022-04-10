@@ -1,5 +1,6 @@
 package com.lanrenspace.edu.controller;
 
+import com.lanrenspace.edu.service.ResumeServiceFeignClient;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,9 @@ public class AutodeliverController {
 
     @Autowired
     private DiscoveryClient discoveryClient;
+
+    @Autowired
+    private ResumeServiceFeignClient resumeServiceFeignClient;
 
     @GetMapping("/checkState/{userId}")
     public Integer findResumeOpenState(@PathVariable Long userId) {
@@ -141,12 +145,12 @@ public class AutodeliverController {
     }
 
 
-
     /**
      * 使用Hystrix熔断器
      * 服务降级
      * 配置属性信息：HystrixCommandProperties
      * hystrix高级配置,定制工作细节
+     *
      * @param userId
      * @return
      */
@@ -157,13 +161,13 @@ public class AutodeliverController {
 
                     ,
                     // 统计时间窗口定义
-                    @HystrixProperty(name="metrics.rollingStats.timeInMilliseconds",value = "8000"),
+                    @HystrixProperty(name = "metrics.rollingStats.timeInMilliseconds", value = "8000"),
                     // 统计时间窗口内的最小请求数
-                    @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold",value = "2"),
+                    @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "2"),
                     // 统计时间窗口内的错误数量百分比阈值
-                    @HystrixProperty(name = "circuitBreaker.errorThresholdPercentage",value = "50"),
+                    @HystrixProperty(name = "circuitBreaker.errorThresholdPercentage", value = "50"),
                     // 自我修复时的活动窗口长度
-                    @HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds",value = "3000")
+                    @HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds", value = "3000")
             }, fallbackMethod = "fallBack",
             // 添加仓壁模式，线程池标识,需要唯一
             threadPoolKey = "findResumeOpenState4",
@@ -180,5 +184,17 @@ public class AutodeliverController {
         System.out.println(url);
         Integer openState = restTemplate.getForObject(url, Integer.class);
         return openState;
+    }
+
+
+    /**
+     * 使用Feign做调整
+     *
+     * @param userId
+     * @return
+     */
+    @GetMapping("/checkState6/{userId}")
+    public Integer findResumeOpenState6(@PathVariable Long userId) {
+        return resumeServiceFeignClient.findDefaultResumeState(userId);
     }
 }
