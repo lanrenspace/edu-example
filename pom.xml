@@ -16,6 +16,8 @@
         <module>edu-cloud-hystrix-turbine</module>
         <module>edu-cloud-gateway</module>
         <module>edu-cloud-config</module>
+        <module>edu-cloud-stream-producer</module>
+        <module>eud-cloud-stream-consumer</module>
     </modules>
     <name>edu-parent</name>
     <packaging>pom</packaging>

@@ -1,0 +1,42 @@
+spring:
+  application:
+    name: lanrenspace.edu.stream.consumer
+  cloud:
+    stream:
+      binders: #綁定MQ服务信息
+        eduRabbitBinder: # 名称定义，用于后面关联使用
+          type: rabbit
+          environment: # MQ环境配置
+            spring:
+              rabbitmq:
+                host: ENC(9YXwP1rAnI/ruJZDlQCDlqgbBwJGjxTuNABV9SRgxtdKPFj5/TvRkwRlhxgSV7A9)
+                port: 5672
+                username: ENC(6FxqWCWXDzS6Hv9c9udqqSrOSAJCg0611KndGAYd3qUgVxbdPm0MQybcaIqqAnqT)
+                password: ENC(Vc49gvKKd3zkSzGKzG+EipCAOaOBlfwG7vE2eXYwsgL1eSgtZj+RHRwohGByW1o0)
+      bindings: #关联整合
+        input: #input
+          destination: eduExchange #消息队列主题名称
+          content-type: text/plan
+          binder: eduRabbitBinder
+#注册到Eureka服务中心
+edu:
+  eureka: LanrenspaceEduEurekaServerNodeA
+eureka:
+  client:
+    service-url:
+      #defaultZone: http://${edu.eureka}:8761/eureka,http://${edu.eureka}:8762/eureka,http://${edu.eureka}:8763/eureka
+      defaultZone: http://${edu.eureka}:8761/eureka
+  instance:
+    instance-id: ${spring.application.name}:${server.port}
+
+---
+server:
+  port: 9091
+spring:
+  profiles: NODE_9091
+
+---
+server:
+  port: 9092
+spring:
+  profiles: NODE_9092
