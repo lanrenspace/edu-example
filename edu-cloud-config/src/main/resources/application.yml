@@ -13,6 +13,11 @@ spring:
           search-paths:
             - edu-config-repo
       label: main
+  rabbitmq:
+    host: ENC(9YXwP1rAnI/ruJZDlQCDlqgbBwJGjxTuNABV9SRgxtdKPFj5/TvRkwRlhxgSV7A9)
+    port: 5672
+    username: ENC(6FxqWCWXDzS6Hv9c9udqqSrOSAJCg0611KndGAYd3qUgVxbdPm0MQybcaIqqAnqT)
+    password: ENC(Vc49gvKKd3zkSzGKzG+EipCAOaOBlfwG7vE2eXYwsgL1eSgtZj+RHRwohGByW1o0)
 
 #注册到Eureka服务中心
 edu:

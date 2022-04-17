@@ -9,3 +9,8 @@ spring:
       label: main
       # config server 地址
       uri: http://localhost:9006
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
