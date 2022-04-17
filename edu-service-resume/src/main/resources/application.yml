@@ -1,0 +1,11 @@
+---
+server:
+  port: 8080
+spring:
+  profiles: NODE_8080
+
+---
+server:
+  port: 8081
+spring:
+  profiles: NODE_8081

@@ -1,0 +1,16 @@
+spring:
+  cloud:
+    config:
+      #文件名称
+      name: lanrenspace.edu.service.resume
+      #环境
+      profile: dev
+      #分支
+      label: main
+      # config server 地址
+      uri: http://localhost:9006
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
