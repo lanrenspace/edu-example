@@ -18,6 +18,7 @@
         <module>edu-cloud-config</module>
         <module>edu-cloud-stream-producer</module>
         <module>eud-cloud-stream-consumer</module>
+        <module>edu-cloud-zipkin-server</module>
     </modules>
     <name>edu-parent</name>
     <packaging>pom</packaging>

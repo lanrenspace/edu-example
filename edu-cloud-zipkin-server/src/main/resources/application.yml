@@ -1,0 +1,23 @@
+server:
+  port: 9411
+management:
+  metrics:
+    web:
+      server:
+        # 关闭自动检测请求
+        auto-time-requests: false
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ENC(DWxYK9F6lsGca3r9xSBxPVBDZxlxAC4bgmN87YpOQApVFSsO9paPyoZioQ4CKhJlECa1Y4wyCb8/e0ZiyYm1fDtr98A+48yzXXC4Puq+k66c4M6cELxFs6Y+qVr9SyL4v9SZCAVfXFt2ZTm5mdF1oXcK4GfJszRphpuRTvBcdLU=)
+    username: ENC(wRVfiDaDJ/t0sBi3hT0IBkRgxrjZa83FTmub8O8SjtfpHp3odrxJdA3DXIgLjdhW)
+    password: ENC(cSuSxF2uJ6YLBuDrhr6ydJtMHH4PhfTI1O+1rEdli/v1cG4AkP9hO1NL2SpjStoA)
+    druid:
+      initial-size: 10
+      min-idle: 10
+      max-active: 30
+      max-wait: 50000
+zipkin:
+  storage:
+    type: mysql
